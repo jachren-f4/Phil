@@ -1,70 +1,92 @@
 # Crossword Puzzle #1
 
-**Theme:** "Love and Intimacy"
-**Size:** 5×6 (30 cells)
+**Theme:** "Love, Intimacy and Sex"
+**Size:** 7×9 (63 cells)
 
 ## Grid
 
 ```
-┌───┬───┬───┬───┬───┬───┐
-│ D │   │ D │ E │   │   │
-├───┼───┼───┼───┼───┼───┤
-│ A │   │ A │ N │ D │   │
-├───┼───┼───┼───┼───┼───┤
-│ T │ E │ N │ D │ E │ R │
-├───┼───┼───┼───┼───┼───┤
-│ E │   │ C │   │ A │ A │
-├───┼───┼───┼───┼───┼───┤
-│   │ H │ E │ A │ R │ T │
-└───┴───┴───┴───┴───┴───┘
+┌───┬───┬───┬───┬───┬───┬───┬───┬───┐
+│ S │ T │ U │ N │ N │ I │ N │ G │   │
+├───┼───┼───┼───┼───┼───┼───┼───┼───┤
+│ U │ O │   │   │   │   │   │   │   │
+├───┼───┼───┼───┼───┼───┼───┼───┼───┤
+│ P │ T │   │ S │ U │ N │ S │ E │ T │
+├───┼───┼───┼───┼───┼───┼───┼───┼───┤
+│ P │ A │ R │ T │ N │ E │ R │   │ O │
+├───┼───┼───┼───┼───┼───┼───┼───┼───┤
+│ O │ L │   │   │ I │ V │   │ A │ K │
+├───┼───┼───┼───┼───┼───┼───┼───┼───┤
+│ R │   │   │   │ T │ E │ A │ S │ E │
+├───┼───┼───┼───┼───┼───┼───┼───┼───┤
+│ T │ E │ N │ D │ E │ R │   │ S │ N │
+└───┴───┴───┴───┴───┴───┴───┴───┴───┘
 ```
 
 ## Statistics
 
-- **Total Sequences:** 10
-- **3+ Letter Words:** 8
-- **2-Letter Abbreviations:** 2
-- **Coverage:** 73.3%
+- **Total Sequences:** 19
+- **3+ Letter Words:** 11
+- **2-Letter Abbreviations:** 8
+- **Coverage:** 73.0%
 - **Valid Words:** 100%
 
 ## Word List
 
-### Across (5)
-- **DE** (2 letters) (2-letter)
-- **AND** (3 letters)
+### Across (11)
+- **STUNNING** (8 letters)
+- **SUNSET** (6 letters)
+- **PARTNER** (7 letters)
+- **TEASE** (5 letters)
 - **TENDER** (6 letters)
-- **AA** (2 letters) (2-letter)
-- **HEART** (5 letters)
+- **UO** (2 letters) (2-letter)
+- **PT** (2 letters) (2-letter)
+- **OL** (2 letters) (2-letter)
+- **IV** (2 letters) (2-letter)
+- **AK** (2 letters) (2-letter)
+- **SN** (2 letters) (2-letter)
 
-### Down (5)
-- **DATE** (4 letters)
-- **DANCE** (5 letters)
-- **END** (3 letters)
-- **DEAR** (4 letters)
-- **RAT** (3 letters)
+### Down (8)
+- **SUPPORT** (7 letters)
+- **TOTAL** (5 letters)
+- **UNITE** (5 letters)
+- **NEVER** (5 letters)
+- **ASS** (3 letters)
+- **TOKEN** (5 letters)
+- **ST** (2 letters) (2-letter)
+- **SR** (2 letters) (2-letter)
 
 ## Theme Analysis
 
-- **Theme Match:** 5/8 (63%)
-- **Themed Words:** TENDER, HEART, DATE, DANCE, DEAR
+- **Theme Match:** 11/11 (100%)
+- **Themed Words:** STUNNING, SUNSET, PARTNER, TEASE, TENDER, SUPPORT, TOTAL, UNITE, NEVER, ASS, TOKEN
 
 ## Clue Suggestions
 
 ### Across Clues
-- DE: "(2-letter abbreviation - LLM generated)"
-- AND: "(Theme: love)"
-- TENDER: "(Theme: love)"
-- AA: "(2-letter abbreviation - LLM generated)"
-- HEART: "(Theme: love)"
+- STUNNING: "(Theme: love/intimacy/sex)"
+- SUNSET: "(Theme: love/intimacy/sex)"
+- PARTNER: "(Theme: love/intimacy/sex)"
+- TEASE: "(Theme: love/intimacy/sex)"
+- TENDER: "(Theme: love/intimacy/sex)"
+- UO: "(2-letter abbreviation - LLM generated)"
+- PT: "(2-letter abbreviation - LLM generated)"
+- OL: "(2-letter abbreviation - LLM generated)"
+- IV: "(2-letter abbreviation - LLM generated)"
+- AK: "(2-letter abbreviation - LLM generated)"
+- SN: "(2-letter abbreviation - LLM generated)"
 
 ### Down Clues
-- DATE: "(Theme: love)"
-- DANCE: "(Theme: love)"
-- END: "(Theme: love)"
-- DEAR: "(Theme: love)"
-- RAT: "(Theme: love)"
+- SUPPORT: "(Theme: love/intimacy/sex)"
+- TOTAL: "(Theme: love/intimacy/sex)"
+- UNITE: "(Theme: love/intimacy/sex)"
+- NEVER: "(Theme: love/intimacy/sex)"
+- ASS: "(Theme: love/intimacy/sex)"
+- TOKEN: "(Theme: love/intimacy/sex)"
+- ST: "(2-letter abbreviation - LLM generated)"
+- SR: "(2-letter abbreviation - LLM generated)"
 
 ---
 
 **Generated:** 2025-11-24
-**Quality:** ✅ All words valid, 73.3% coverage
+**Quality:** ✅ All words valid, 73.0% coverage

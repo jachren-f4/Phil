@@ -1,0 +1,1146 @@
+{
+  "theme": "love-intimacy-and-sex",
+  "description": "Combined word list: romantic love, intimacy, and explicit sexual content",
+  "words": {
+    "LOVE": {
+      "category": "core",
+      "difficulty": "easy"
+    },
+    "HEART": {
+      "category": "core",
+      "difficulty": "easy"
+    },
+    "KISS": {
+      "category": "core",
+      "difficulty": "easy"
+    },
+    "HUG": {
+      "category": "core",
+      "difficulty": "easy"
+    },
+    "DATE": {
+      "category": "core",
+      "difficulty": "easy"
+    },
+    "ROMANCE": {
+      "category": "core",
+      "difficulty": "easy"
+    },
+    "PASSION": {
+      "category": "core",
+      "difficulty": "medium"
+    },
+    "DESIRE": {
+      "category": "longing",
+      "difficulty": "medium"
+    },
+    "ADORE": {
+      "category": "core",
+      "difficulty": "easy"
+    },
+    "CHERISH": {
+      "category": "core",
+      "difficulty": "medium"
+    },
+    "TENDER": {
+      "category": "sensations",
+      "difficulty": "easy"
+    },
+    "SWEET": {
+      "category": "feelings",
+      "difficulty": "easy"
+    },
+    "WARM": {
+      "category": "sensations",
+      "difficulty": "easy"
+    },
+    "GENTLE": {
+      "category": "sensations",
+      "difficulty": "easy"
+    },
+    "CARING": {
+      "category": "feelings",
+      "difficulty": "easy"
+    },
+    "DEVOTED": {
+      "category": "intimacy",
+      "difficulty": "medium"
+    },
+    "FOND": {
+      "category": "feelings",
+      "difficulty": "medium"
+    },
+    "LOVING": {
+      "category": "feelings",
+      "difficulty": "easy"
+    },
+    "DEAR": {
+      "category": "feelings",
+      "difficulty": "easy"
+    },
+    "CLOSE": {
+      "category": "closeness",
+      "difficulty": "easy"
+    },
+    "PARTNER": {
+      "category": "relationships",
+      "difficulty": "easy"
+    },
+    "LOVER": {
+      "category": "relationships",
+      "difficulty": "easy"
+    },
+    "COUPLE": {
+      "category": "relationships",
+      "difficulty": "easy"
+    },
+    "MATE": {
+      "category": "relationships",
+      "difficulty": "easy"
+    },
+    "PAIR": {
+      "category": "relationships",
+      "difficulty": "easy"
+    },
+    "SOULMATE": {
+      "category": "relationships",
+      "difficulty": "medium"
+    },
+    "BELOVED": {
+      "category": "relationships",
+      "difficulty": "medium"
+    },
+    "DARLING": {
+      "category": "relationships",
+      "difficulty": "easy"
+    },
+    "SWEETHEART": {
+      "category": "relationships",
+      "difficulty": "medium"
+    },
+    "EMBRACE": {
+      "category": "actions",
+      "difficulty": "medium"
+    },
+    "CARESS": {
+      "category": "actions",
+      "difficulty": "medium"
+    },
+    "CUDDLE": {
+      "category": "actions",
+      "difficulty": "easy"
+    },
+    "HOLD": {
+      "category": "actions",
+      "difficulty": "easy"
+    },
+    "TOUCH": {
+      "category": "actions",
+      "difficulty": "easy"
+    },
+    "WOO": {
+      "category": "actions",
+      "difficulty": "medium"
+    },
+    "COURT": {
+      "category": "actions",
+      "difficulty": "medium"
+    },
+    "FLIRT": {
+      "category": "actions",
+      "difficulty": "easy"
+    },
+    "CHARM": {
+      "category": "qualities",
+      "difficulty": "easy"
+    },
+    "ATTRACT": {
+      "category": "qualities",
+      "difficulty": "easy"
+    },
+    "SEDUCE": {
+      "category": "actions",
+      "difficulty": "medium"
+    },
+    "TRUST": {
+      "category": "intimacy",
+      "difficulty": "easy"
+    },
+    "BOND": {
+      "category": "intimacy",
+      "difficulty": "easy"
+    },
+    "CONNECT": {
+      "category": "intimacy",
+      "difficulty": "easy"
+    },
+    "SHARE": {
+      "category": "intimacy",
+      "difficulty": "easy"
+    },
+    "UNITE": {
+      "category": "intimacy",
+      "difficulty": "easy"
+    },
+    "COMMIT": {
+      "category": "intimacy",
+      "difficulty": "easy"
+    },
+    "LOYAL": {
+      "category": "intimacy",
+      "difficulty": "easy"
+    },
+    "FAITHFUL": {
+      "category": "intimacy",
+      "difficulty": "medium"
+    },
+    "TRUE": {
+      "category": "authenticity",
+      "difficulty": "easy"
+    },
+    "BLISS": {
+      "category": "emotions",
+      "difficulty": "medium"
+    },
+    "JOY": {
+      "category": "emotions",
+      "difficulty": "easy"
+    },
+    "HAPPY": {
+      "category": "emotions",
+      "difficulty": "easy"
+    },
+    "ELATED": {
+      "category": "emotions",
+      "difficulty": "medium"
+    },
+    "GLOW": {
+      "category": "emotions",
+      "difficulty": "easy"
+    },
+    "SWOON": {
+      "category": "emotions",
+      "difficulty": "medium"
+    },
+    "YEARN": {
+      "category": "emotions",
+      "difficulty": "medium"
+    },
+    "LONG": {
+      "category": "emotions",
+      "difficulty": "easy"
+    },
+    "MISS": {
+      "category": "emotions",
+      "difficulty": "easy"
+    },
+    "CRAVE": {
+      "category": "emotions",
+      "difficulty": "medium"
+    },
+    "FLOWER": {
+      "category": "symbols",
+      "difficulty": "easy"
+    },
+    "ROSE": {
+      "category": "symbols",
+      "difficulty": "easy"
+    },
+    "RING": {
+      "category": "symbols",
+      "difficulty": "easy"
+    },
+    "GIFT": {
+      "category": "symbols",
+      "difficulty": "easy"
+    },
+    "CARD": {
+      "category": "symbols",
+      "difficulty": "easy"
+    },
+    "CANDY": {
+      "category": "symbols",
+      "difficulty": "easy"
+    },
+    "CHOCOLATE": {
+      "category": "symbols",
+      "difficulty": "medium"
+    },
+    "DIAMOND": {
+      "category": "symbols",
+      "difficulty": "easy"
+    },
+    "JEWEL": {
+      "category": "symbols",
+      "difficulty": "easy"
+    },
+    "TOKEN": {
+      "category": "symbols",
+      "difficulty": "medium"
+    },
+    "DANCE": {
+      "category": "activities",
+      "difficulty": "easy"
+    },
+    "DINNER": {
+      "category": "activities",
+      "difficulty": "easy"
+    },
+    "WALK": {
+      "category": "activities",
+      "difficulty": "easy"
+    },
+    "TALK": {
+      "category": "activities",
+      "difficulty": "easy"
+    },
+    "LISTEN": {
+      "category": "activities",
+      "difficulty": "easy"
+    },
+    "LAUGH": {
+      "category": "playful",
+      "difficulty": "easy"
+    },
+    "SMILE": {
+      "category": "physical",
+      "difficulty": "easy"
+    },
+    "GAZE": {
+      "category": "physical",
+      "difficulty": "medium"
+    },
+    "STARE": {
+      "category": "activities",
+      "difficulty": "easy"
+    },
+    "WATCH": {
+      "category": "activities",
+      "difficulty": "easy"
+    },
+    "WEDDING": {
+      "category": "commitment",
+      "difficulty": "easy"
+    },
+    "MARRY": {
+      "category": "commitment",
+      "difficulty": "easy"
+    },
+    "VOWS": {
+      "category": "commitment",
+      "difficulty": "medium"
+    },
+    "PROMISE": {
+      "category": "commitment",
+      "difficulty": "easy"
+    },
+    "PLEDGE": {
+      "category": "commitment",
+      "difficulty": "medium"
+    },
+    "FOREVER": {
+      "category": "time",
+      "difficulty": "easy"
+    },
+    "ALWAYS": {
+      "category": "time",
+      "difficulty": "easy"
+    },
+    "ETERNAL": {
+      "category": "time",
+      "difficulty": "medium"
+    },
+    "EYES": {
+      "category": "physical",
+      "difficulty": "easy"
+    },
+    "LIPS": {
+      "category": "physical",
+      "difficulty": "easy"
+    },
+    "HAND": {
+      "category": "physical",
+      "difficulty": "easy"
+    },
+    "ARMS": {
+      "category": "physical",
+      "difficulty": "easy"
+    },
+    "FACE": {
+      "category": "physical",
+      "difficulty": "easy"
+    },
+    "LOOK": {
+      "category": "physical",
+      "difficulty": "easy"
+    },
+    "MOONLIGHT": {
+      "category": "romantic",
+      "difficulty": "medium"
+    },
+    "STARLIGHT": {
+      "category": "romantic",
+      "difficulty": "medium"
+    },
+    "SUNSET": {
+      "category": "romantic",
+      "difficulty": "easy"
+    },
+    "CANDLE": {
+      "category": "romantic",
+      "difficulty": "easy"
+    },
+    "MUSIC": {
+      "category": "romantic",
+      "difficulty": "easy"
+    },
+    "SONG": {
+      "category": "romantic",
+      "difficulty": "easy"
+    },
+    "POETRY": {
+      "category": "romantic",
+      "difficulty": "medium"
+    },
+    "VERSE": {
+      "category": "romantic",
+      "difficulty": "medium"
+    },
+    "LETTER": {
+      "category": "romantic",
+      "difficulty": "easy"
+    },
+    "NOTE": {
+      "category": "romantic",
+      "difficulty": "easy"
+    },
+    "INTIMATE": {
+      "category": "closeness",
+      "difficulty": "medium"
+    },
+    "PRIVATE": {
+      "category": "closeness",
+      "difficulty": "easy"
+    },
+    "PERSONAL": {
+      "category": "closeness",
+      "difficulty": "easy"
+    },
+    "SECRET": {
+      "category": "closeness",
+      "difficulty": "easy"
+    },
+    "HIDDEN": {
+      "category": "closeness",
+      "difficulty": "easy"
+    },
+    "DEEP": {
+      "category": "closeness",
+      "difficulty": "easy"
+    },
+    "NEAR": {
+      "category": "closeness",
+      "difficulty": "easy"
+    },
+    "BEAUTY": {
+      "category": "qualities",
+      "difficulty": "easy"
+    },
+    "GRACE": {
+      "category": "qualities",
+      "difficulty": "easy"
+    },
+    "ALLURE": {
+      "category": "qualities",
+      "difficulty": "medium"
+    },
+    "APPEAL": {
+      "category": "qualities",
+      "difficulty": "easy"
+    },
+    "ALONE": {
+      "category": "togetherness",
+      "difficulty": "easy"
+    },
+    "TOGETHER": {
+      "category": "togetherness",
+      "difficulty": "easy"
+    },
+    "UNITY": {
+      "category": "togetherness",
+      "difficulty": "medium"
+    },
+    "ONENESS": {
+      "category": "togetherness",
+      "difficulty": "medium"
+    },
+    "MERGE": {
+      "category": "togetherness",
+      "difficulty": "medium"
+    },
+    "JOIN": {
+      "category": "togetherness",
+      "difficulty": "easy"
+    },
+    "WANT": {
+      "category": "longing",
+      "difficulty": "easy"
+    },
+    "NEED": {
+      "category": "longing",
+      "difficulty": "easy"
+    },
+    "WISH": {
+      "category": "longing",
+      "difficulty": "easy"
+    },
+    "HOPE": {
+      "category": "longing",
+      "difficulty": "easy"
+    },
+    "DREAM": {
+      "category": "longing",
+      "difficulty": "easy"
+    },
+    "FANTASY": {
+      "category": "longing",
+      "difficulty": "medium"
+    },
+    "AFFAIR": {
+      "category": "relationship-types",
+      "difficulty": "medium"
+    },
+    "FLING": {
+      "category": "relationship-types",
+      "difficulty": "medium"
+    },
+    "CRUSH": {
+      "category": "relationship-types",
+      "difficulty": "easy"
+    },
+    "INFATUATION": {
+      "category": "relationship-types",
+      "difficulty": "hard"
+    },
+    "VALENTINE": {
+      "category": "occasions",
+      "difficulty": "medium"
+    },
+    "ANNIVERSARY": {
+      "category": "occasions",
+      "difficulty": "medium"
+    },
+    "SEXY": {
+      "category": "attraction",
+      "difficulty": "easy"
+    },
+    "HOT": {
+      "category": "attraction",
+      "difficulty": "easy"
+    },
+    "GORGEOUS": {
+      "category": "attraction",
+      "difficulty": "medium"
+    },
+    "BEAUTIFUL": {
+      "category": "attraction",
+      "difficulty": "easy"
+    },
+    "HANDSOME": {
+      "category": "attraction",
+      "difficulty": "easy"
+    },
+    "PRETTY": {
+      "category": "attraction",
+      "difficulty": "easy"
+    },
+    "CUTE": {
+      "category": "attraction",
+      "difficulty": "easy"
+    },
+    "STUNNING": {
+      "category": "attraction",
+      "difficulty": "medium"
+    },
+    "TEASE": {
+      "category": "playful",
+      "difficulty": "easy"
+    },
+    "PLAY": {
+      "category": "playful",
+      "difficulty": "easy"
+    },
+    "FUN": {
+      "category": "playful",
+      "difficulty": "easy"
+    },
+    "GIGGLE": {
+      "category": "playful",
+      "difficulty": "easy"
+    },
+    "WINK": {
+      "category": "playful",
+      "difficulty": "easy"
+    },
+    "SAFE": {
+      "category": "security",
+      "difficulty": "easy"
+    },
+    "COMFORT": {
+      "category": "security",
+      "difficulty": "easy"
+    },
+    "SECURE": {
+      "category": "security",
+      "difficulty": "easy"
+    },
+    "PROTECT": {
+      "category": "security",
+      "difficulty": "easy"
+    },
+    "SHELTER": {
+      "category": "security",
+      "difficulty": "easy"
+    },
+    "HAVEN": {
+      "category": "security",
+      "difficulty": "medium"
+    },
+    "CARE": {
+      "category": "nurture",
+      "difficulty": "easy"
+    },
+    "NURTURE": {
+      "category": "nurture",
+      "difficulty": "medium"
+    },
+    "SUPPORT": {
+      "category": "nurture",
+      "difficulty": "easy"
+    },
+    "HELP": {
+      "category": "nurture",
+      "difficulty": "easy"
+    },
+    "GUIDE": {
+      "category": "nurture",
+      "difficulty": "easy"
+    },
+    "ENCOURAGE": {
+      "category": "nurture",
+      "difficulty": "medium"
+    },
+    "SOFT": {
+      "category": "sensations",
+      "difficulty": "easy"
+    },
+    "DELICATE": {
+      "category": "sensations",
+      "difficulty": "medium"
+    },
+    "SMOOTH": {
+      "category": "sensations",
+      "difficulty": "easy"
+    },
+    "FLAME": {
+      "category": "metaphors",
+      "difficulty": "easy"
+    },
+    "FIRE": {
+      "category": "metaphors",
+      "difficulty": "easy"
+    },
+    "SPARK": {
+      "category": "metaphors",
+      "difficulty": "easy"
+    },
+    "BURN": {
+      "category": "metaphors",
+      "difficulty": "easy"
+    },
+    "HEAT": {
+      "category": "metaphors",
+      "difficulty": "easy"
+    },
+    "SOUL": {
+      "category": "spiritual",
+      "difficulty": "easy"
+    },
+    "SPIRIT": {
+      "category": "spiritual",
+      "difficulty": "easy"
+    },
+    "ESSENCE": {
+      "category": "spiritual",
+      "difficulty": "medium"
+    },
+    "BEING": {
+      "category": "spiritual",
+      "difficulty": "easy"
+    },
+    "MOMENT": {
+      "category": "time",
+      "difficulty": "easy"
+    },
+    "NEVER": {
+      "category": "time",
+      "difficulty": "easy"
+    },
+    "LASTING": {
+      "category": "time",
+      "difficulty": "easy"
+    },
+    "MINE": {
+      "category": "possession",
+      "difficulty": "easy"
+    },
+    "YOURS": {
+      "category": "possession",
+      "difficulty": "easy"
+    },
+    "OURS": {
+      "category": "possession",
+      "difficulty": "easy"
+    },
+    "SPACE": {
+      "category": "abstract",
+      "difficulty": "easy"
+    },
+    "TIME": {
+      "category": "abstract",
+      "difficulty": "easy"
+    },
+    "PLACE": {
+      "category": "abstract",
+      "difficulty": "easy"
+    },
+    "WORLD": {
+      "category": "abstract",
+      "difficulty": "easy"
+    },
+    "EVERY": {
+      "category": "intensity",
+      "difficulty": "easy"
+    },
+    "ALL": {
+      "category": "intensity",
+      "difficulty": "easy"
+    },
+    "WHOLE": {
+      "category": "intensity",
+      "difficulty": "easy"
+    },
+    "COMPLETE": {
+      "category": "intensity",
+      "difficulty": "easy"
+    },
+    "TOTAL": {
+      "category": "intensity",
+      "difficulty": "easy"
+    },
+    "REAL": {
+      "category": "authenticity",
+      "difficulty": "easy"
+    },
+    "GENUINE": {
+      "category": "authenticity",
+      "difficulty": "medium"
+    },
+    "HONEST": {
+      "category": "authenticity",
+      "difficulty": "easy"
+    },
+    "SINCERE": {
+      "category": "authenticity",
+      "difficulty": "medium"
+    },
+    "PURE": {
+      "category": "authenticity",
+      "difficulty": "easy"
+    },
+    "LUST": {
+      "category": "passion",
+      "difficulty": "medium"
+    },
+    "AROUSAL": {
+      "category": "passion",
+      "difficulty": "medium"
+    },
+    "SENSUAL": {
+      "category": "passion",
+      "difficulty": "medium"
+    },
+    "EROTIC": {
+      "category": "passion",
+      "difficulty": "medium"
+    },
+    "SEX": {
+      "category": "core",
+      "difficulty": "easy"
+    },
+    "COCK": {
+      "category": "anatomy",
+      "difficulty": "easy"
+    },
+    "PUSSY": {
+      "category": "anatomy",
+      "difficulty": "easy"
+    },
+    "DICK": {
+      "category": "anatomy",
+      "difficulty": "easy"
+    },
+    "TITS": {
+      "category": "anatomy",
+      "difficulty": "easy"
+    },
+    "ASS": {
+      "category": "anatomy",
+      "difficulty": "easy"
+    },
+    "FUCK": {
+      "category": "action",
+      "difficulty": "easy"
+    },
+    "CUM": {
+      "category": "action",
+      "difficulty": "easy"
+    },
+    "KINK": {
+      "category": "activity",
+      "difficulty": "easy"
+    },
+    "ORAL": {
+      "category": "activity",
+      "difficulty": "easy"
+    },
+    "ANAL": {
+      "category": "activity",
+      "difficulty": "easy"
+    },
+    "RIM": {
+      "category": "action",
+      "difficulty": "easy"
+    },
+    "BLOW": {
+      "category": "action",
+      "difficulty": "easy"
+    },
+    "SUCK": {
+      "category": "action",
+      "difficulty": "easy"
+    },
+    "LICK": {
+      "category": "action",
+      "difficulty": "easy"
+    },
+    "MOAN": {
+      "category": "action",
+      "difficulty": "easy"
+    },
+    "WET": {
+      "category": "state",
+      "difficulty": "easy"
+    },
+    "HARD": {
+      "category": "state",
+      "difficulty": "easy"
+    },
+    "CLIT": {
+      "category": "anatomy",
+      "difficulty": "easy"
+    },
+    "NIPPLE": {
+      "category": "anatomy",
+      "difficulty": "easy"
+    },
+    "BALLS": {
+      "category": "anatomy",
+      "difficulty": "easy"
+    },
+    "SHAFT": {
+      "category": "anatomy",
+      "difficulty": "easy"
+    },
+    "HEAD": {
+      "category": "anatomy",
+      "difficulty": "easy"
+    },
+    "TIP": {
+      "category": "anatomy",
+      "difficulty": "easy"
+    },
+    "HOLE": {
+      "category": "anatomy",
+      "difficulty": "easy"
+    },
+    "BUSH": {
+      "category": "anatomy",
+      "difficulty": "easy"
+    },
+    "PUBES": {
+      "category": "anatomy",
+      "difficulty": "easy"
+    },
+    "LABIA": {
+      "category": "anatomy",
+      "difficulty": "easy"
+    },
+    "FORESKIN": {
+      "category": "anatomy",
+      "difficulty": "medium"
+    },
+    "GLAND": {
+      "category": "anatomy",
+      "difficulty": "medium"
+    },
+    "THRUST": {
+      "category": "action",
+      "difficulty": "easy"
+    },
+    "GRIND": {
+      "category": "action",
+      "difficulty": "easy"
+    },
+    "HUMP": {
+      "category": "action",
+      "difficulty": "easy"
+    },
+    "RIDE": {
+      "category": "action",
+      "difficulty": "easy"
+    },
+    "TOP": {
+      "category": "role",
+      "difficulty": "easy"
+    },
+    "BOTTOM": {
+      "category": "role",
+      "difficulty": "easy"
+    },
+    "DOM": {
+      "category": "role",
+      "difficulty": "easy"
+    },
+    "SUB": {
+      "category": "role",
+      "difficulty": "easy"
+    },
+    "SWITCH": {
+      "category": "role",
+      "difficulty": "easy"
+    },
+    "ROPE": {
+      "category": "bdsm",
+      "difficulty": "easy"
+    },
+    "WHIP": {
+      "category": "bdsm",
+      "difficulty": "easy"
+    },
+    "SPANK": {
+      "category": "bdsm",
+      "difficulty": "easy"
+    },
+    "GAG": {
+      "category": "bdsm",
+      "difficulty": "easy"
+    },
+    "TOY": {
+      "category": "equipment",
+      "difficulty": "easy"
+    },
+    "DILDO": {
+      "category": "equipment",
+      "difficulty": "easy"
+    },
+    "PLUG": {
+      "category": "equipment",
+      "difficulty": "easy"
+    },
+    "VIBE": {
+      "category": "equipment",
+      "difficulty": "easy"
+    },
+    "BEAD": {
+      "category": "equipment",
+      "difficulty": "easy"
+    },
+    "CAGE": {
+      "category": "equipment",
+      "difficulty": "easy"
+    },
+    "PUMP": {
+      "category": "equipment",
+      "difficulty": "easy"
+    },
+    "STRAP": {
+      "category": "equipment",
+      "difficulty": "easy"
+    },
+    "FIST": {
+      "category": "action",
+      "difficulty": "easy"
+    },
+    "SQUIRT": {
+      "category": "action",
+      "difficulty": "easy"
+    },
+    "DRIP": {
+      "category": "action",
+      "difficulty": "easy"
+    },
+    "LEAK": {
+      "category": "action",
+      "difficulty": "easy"
+    },
+    "EDGE": {
+      "category": "technique",
+      "difficulty": "easy"
+    },
+    "RUIN": {
+      "category": "technique",
+      "difficulty": "easy"
+    },
+    "DENY": {
+      "category": "technique",
+      "difficulty": "easy"
+    },
+    "BEG": {
+      "category": "action",
+      "difficulty": "easy"
+    },
+    "RAW": {
+      "category": "practice",
+      "difficulty": "easy"
+    },
+    "BARE": {
+      "category": "practice",
+      "difficulty": "easy"
+    },
+    "CONDOM": {
+      "category": "protection",
+      "difficulty": "easy"
+    },
+    "PILL": {
+      "category": "protection",
+      "difficulty": "easy"
+    },
+    "LUBE": {
+      "category": "equipment",
+      "difficulty": "easy"
+    },
+    "SPIT": {
+      "category": "action",
+      "difficulty": "easy"
+    },
+    "PRECUM": {
+      "category": "fluid",
+      "difficulty": "easy"
+    },
+    "CREAM": {
+      "category": "fluid",
+      "difficulty": "easy"
+    },
+    "PIE": {
+      "category": "activity",
+      "difficulty": "medium"
+    },
+    "LOAD": {
+      "category": "fluid",
+      "difficulty": "easy"
+    },
+    "SEED": {
+      "category": "fluid",
+      "difficulty": "easy"
+    },
+    "BREED": {
+      "category": "action",
+      "difficulty": "easy"
+    },
+    "KNOT": {
+      "category": "action",
+      "difficulty": "easy"
+    },
+    "RUT": {
+      "category": "state",
+      "difficulty": "easy"
+    },
+    "STUD": {
+      "category": "role",
+      "difficulty": "easy"
+    },
+    "BITCH": {
+      "category": "role",
+      "difficulty": "easy"
+    },
+    "SLUT": {
+      "category": "role",
+      "difficulty": "easy"
+    },
+    "WHORE": {
+      "category": "role",
+      "difficulty": "easy"
+    },
+    "NYMPH": {
+      "category": "role",
+      "difficulty": "medium"
+    },
+    "SATYR": {
+      "category": "role",
+      "difficulty": "medium"
+    },
+    "VOYEUR": {
+      "category": "role",
+      "difficulty": "medium"
+    },
+    "EXPO": {
+      "category": "activity",
+      "difficulty": "medium"
+    },
+    "CUCK": {
+      "category": "role",
+      "difficulty": "easy"
+    },
+    "BULL": {
+      "category": "role",
+      "difficulty": "easy"
+    },
+    "STAG": {
+      "category": "role",
+      "difficulty": "easy"
+    },
+    "VIXEN": {
+      "category": "role",
+      "difficulty": "easy"
+    },
+    "HOTWIFE": {
+      "category": "role",
+      "difficulty": "medium"
+    },
+    "SWING": {
+      "category": "activity",
+      "difficulty": "easy"
+    },
+    "ORGY": {
+      "category": "activity",
+      "difficulty": "easy"
+    },
+    "GANG": {
+      "category": "activity",
+      "difficulty": "easy"
+    },
+    "TRAIN": {
+      "category": "activity",
+      "difficulty": "easy"
+    },
+    "BUKKAKE": {
+      "category": "activity",
+      "difficulty": "hard"
+    },
+    "GLORY": {
+      "category": "activity",
+      "difficulty": "easy"
+    }
+  }
+}

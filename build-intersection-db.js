@@ -6,7 +6,7 @@ const fs = require('fs');
 console.log('🔨 Building Intersection Database...\n');
 
 // Load word list
-const wordlistPath = './wordlist-base.json';
+const wordlistPath = './wordlist-combined.json';
 const wordlist = JSON.parse(fs.readFileSync(wordlistPath, 'utf8'));
 
 const words = Object.keys(wordlist.words);
@@ -102,13 +102,23 @@ for (let length = 3; length <= 10; length++) {
 
 console.log(`✅ Generated ${patternCount} patterns`);
 
-// Build final database
+// Build final database with theme metadata
+const metadata = {};
+for (const word in wordlist.words) {
+  metadata[word] = {
+    themes: ['love'], // All words are love-themed
+    category: wordlist.words[word].category,
+    difficulty: wordlist.words[word].difficulty
+  };
+}
+
 const database = {
   words: Object.keys(wordlist.words),
-  metadata: wordlist.words,
+  metadata: metadata,
   intersections: intersections,
   byLength: byLength,
   patterns: patterns,
+  theme: wordlist.theme,
   stats: {
     totalWords: words.length,
     totalIntersections: totalIntersections,
