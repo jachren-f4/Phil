@@ -112,6 +112,9 @@
 
     <div class="divider"></div>
 
+    <button id="view-all-clues" type="button" data-tooltip="View all clues..." onclick="openClueOverview()">
+      <i class="fa fa-list-alt fa-fw" aria-hidden="true"></i>
+    </button>
     <button id="open-wordlist" type="button" data-tooltip="Change dictionary..." onclick="openWordlist()">
       <i class="fa fa-book fa-fw" aria-hidden="true"></i>
     </button>
@@ -126,21 +129,25 @@
   <div id="sidebar">
     <div class="half-sidebar">
       <div id="across-heading" class="direction-heading">
+        <h4 class="clue-direction-label">Across</h4>
         <div class="clue">
           <span id="across-clue-number" class="clue-number"></span>
-          <span id="across-clue-text" class="editable" contenteditable="true" onkeydown="suppressEnterKey(event)" onfocusout="setClues()"></span>
+          <span id="across-clue-text" class="editable" contenteditable="true" onkeydown="suppressEnterKey(event)" onfocusout="setClues()" placeholder="Enter clue..."></span>
         </div>
         <div id="across-word" class="current-word"></div>
+        <div id="across-coordinates" class="clue-coordinates"></div>
       </div>
       <ul id="across-matches" class="matches"></ul>
     </div>
     <div class="half-sidebar">
       <div id="down-heading" class="direction-heading">
+        <h4 class="clue-direction-label">Down</h4>
         <div class="clue">
           <span id="down-clue-number" class="clue-number"></span>
-          <span id="down-clue-text" class="editable" contenteditable="true" onkeydown="suppressEnterKey(event)" onfocusout="setClues()"></span>
+          <span id="down-clue-text" class="editable" contenteditable="true" onkeydown="suppressEnterKey(event)" onfocusout="setClues()" placeholder="Enter clue..."></span>
         </div>
         <div id="down-word" class="current-word"></div>
+        <div id="down-coordinates" class="clue-coordinates"></div>
       </div>
       <ul id="down-matches" class="matches"></ul>
     </div>
@@ -172,6 +179,27 @@
       <div class="modal-buttons">
         <button onclick="cancelPuzzleLoad()">Cancel</button>
         <button onclick="confirmPuzzleLoad()" class="button-primary">Open Puzzle</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Clue Overview (Read-Only) -->
+  <div id="clue-overview" class="modal hidden">
+    <div class="modal-content modal-large">
+      <h3>All Clues</h3>
+      <p class="modal-subtitle">Click any clue to jump to that position in the grid</p>
+      <div class="clue-editor-container">
+        <div class="clue-editor-column">
+          <h4>Across Clues</h4>
+          <div id="across-clues-list" class="clues-readonly-list"></div>
+        </div>
+        <div class="clue-editor-column">
+          <h4>Down Clues</h4>
+          <div id="down-clues-list" class="clues-readonly-list"></div>
+        </div>
+      </div>
+      <div class="modal-buttons">
+        <button onclick="closeClueOverview()" class="button-primary">Close</button>
       </div>
     </div>
   </div>

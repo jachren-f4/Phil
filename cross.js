@@ -490,6 +490,10 @@ function updateCluesUI() {
   downClueNumber.innerHTML = downCell.firstChild.innerHTML + "d.";
   acrossClueText.innerHTML = xw.clues[[current.row, current.acrossStartIndex, ACROSS]];
   downClueText.innerHTML = xw.clues[[current.downStartIndex, current.col, DOWN]];
+
+  // Update coordinates
+  document.getElementById("across-coordinates").innerHTML = `Position: [${current.row}, ${current.acrossStartIndex}]`;
+  document.getElementById("down-coordinates").innerHTML = `Position: [${current.downStartIndex}, ${current.col}]`;
 }
 
 function updateInfoUI() {
@@ -675,6 +679,132 @@ function suppressEnterKey(e) {
     e.preventDefault();
     // console.log("Enter key behavior suppressed.");
   }
+}
+
+function getAllLabels() {
+  // Recreate label numbering to match current grid
+  const labels = [];
+  for (let i = 0; i < xw.rows; i++) {
+    labels[i] = [];
+  }
+
+  let count = 1;
+  for (let i = 0; i < xw.rows; i++) {
+    for (let j = 0; j < xw.cols; j++) {
+      let isAcross = false;
+      let isDown = false;
+      if (xw.fill[i][j] != BLACK) {
+        isDown = i == 0 || xw.fill[i - 1][j] == BLACK;
+        isAcross = j == 0 || xw.fill[i][j - 1] == BLACK;
+      }
+      if (isAcross || isDown) {
+        labels[i][j] = count;
+        count++;
+      } else {
+        labels[i][j] = null;
+      }
+    }
+  }
+  return labels;
+}
+
+function openClueOverview() {
+  // Get all clue labels and organize by direction
+  const labels = getAllLabels();
+  const acrossClues = [];
+  const downClues = [];
+
+  // Collect all across clues
+  for (let i = 0; i < xw.rows; i++) {
+    for (let j = 0; j < xw.cols; j++) {
+      if (labels[i][j]) {
+        const label = labels[i][j];
+        const acrossWord = getWordAt(i, j, ACROSS, false);
+        if (acrossWord && acrossWord.length > 1) {
+          const clue = xw.clues[[i, j, ACROSS]] || "(blank clue)";
+          acrossClues.push({ label, row: i, col: j, clue, word: acrossWord });
+        }
+      }
+    }
+  }
+
+  // Collect all down clues
+  for (let i = 0; i < xw.rows; i++) {
+    for (let j = 0; j < xw.cols; j++) {
+      if (labels[i][j]) {
+        const label = labels[i][j];
+        const downWord = getWordAt(i, j, DOWN, false);
+        if (downWord && downWord.length > 1) {
+          const clue = xw.clues[[i, j, DOWN]] || "(blank clue)";
+          downClues.push({ label, row: i, col: j, clue, word: downWord });
+        }
+      }
+    }
+  }
+
+  // Populate across clues list
+  const acrossContainer = document.getElementById('across-clues-list');
+  acrossContainer.innerHTML = '';
+  acrossClues.forEach(item => {
+    const clueItem = document.createElement('div');
+    clueItem.className = 'clue-item';
+    clueItem.onclick = () => jumpToClue(item.row, item.col);
+    clueItem.innerHTML = `
+      <div class="clue-item-header">
+        <span class="clue-item-number">${item.label}.</span>
+        <span class="clue-item-coords">[${item.row}, ${item.col}]</span>
+      </div>
+      <div class="clue-item-word">${item.word}</div>
+      <div class="clue-item-text">${escapeHtml(item.clue)}</div>
+    `;
+    acrossContainer.appendChild(clueItem);
+  });
+
+  // Populate down clues list
+  const downContainer = document.getElementById('down-clues-list');
+  downContainer.innerHTML = '';
+  downClues.forEach(item => {
+    const clueItem = document.createElement('div');
+    clueItem.className = 'clue-item';
+    clueItem.onclick = () => jumpToClue(item.row, item.col);
+    clueItem.innerHTML = `
+      <div class="clue-item-header">
+        <span class="clue-item-number">${item.label}.</span>
+        <span class="clue-item-coords">[${item.row}, ${item.col}]</span>
+      </div>
+      <div class="clue-item-word">${item.word}</div>
+      <div class="clue-item-text">${escapeHtml(item.clue)}</div>
+    `;
+    downContainer.appendChild(clueItem);
+  });
+
+  // Show modal
+  document.getElementById('clue-overview').classList.remove('hidden');
+}
+
+function closeClueOverview() {
+  document.getElementById('clue-overview').classList.add('hidden');
+}
+
+function jumpToClue(row, col) {
+  // Close the overview
+  closeClueOverview();
+
+  // Update current position
+  current.row = row;
+  current.col = col;
+
+  // Update the UI
+  updateUI();
+
+  // Focus the grid
+  grid.focus();
+}
+
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
 }
 
 function generatePattern() {
