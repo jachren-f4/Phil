@@ -159,6 +159,23 @@
     </div>
   </div>
 
+  <!-- Size Confirmation Dialog -->
+  <div id="size-confirmation-dialog" class="modal hidden">
+    <div class="modal-content">
+      <h3>Confirm Puzzle Size</h3>
+      <p>This puzzle has a custom grid size. Please confirm or adjust before opening:</p>
+      <div class="size-inputs">
+        <label>Rows: <input type="number" id="confirm-rows" min="3" max="25" value="15" /></label>
+        <span>×</span>
+        <label>Cols: <input type="number" id="confirm-cols" min="3" max="25" value="15" /></label>
+      </div>
+      <div class="modal-buttons">
+        <button onclick="cancelPuzzleLoad()">Cancel</button>
+        <button onclick="confirmPuzzleLoad()" class="button-primary">Open Puzzle</button>
+      </div>
+    </div>
+  </div>
+
   <div id="credits">
     <a href="mailto:me@keiranking.com?Subject=Phil" target="_top">Contact</a> &middot;
     <a href="http://www.keiranking.com/" target="_blank">keiranking.com</a> &middot;

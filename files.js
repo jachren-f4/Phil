@@ -13,6 +13,9 @@
 // limitations under the License.
 // ------------------------------------------------------------------------
 
+// Global variable to store pending puzzle data during size confirmation
+let pendingPuzzleData = null;
+
 function ScrambledError() {
    this.message = 'Cannot open scrambled Across Lite files';
    this.name = 'ScrambledError';
@@ -300,26 +303,78 @@ function openFile(e) {
 }
 
 function convertJSONToPuzzle(puz) {
-  createNewPuzzle();
-  if (puz.size.rows != DEFAULT_SIZE || puz.size.cols != DEFAULT_SIZE) {
-    new Notification("Oops. Can only open 15 x 15 puzzles.", 10);
+  // Store puzzle data and show size confirmation dialog
+  pendingPuzzleData = puz;
+
+  // Auto-detect size from puzzle
+  const detectedRows = puz.size.rows;
+  const detectedCols = puz.size.cols;
+
+  // Pre-fill the dialog with detected size
+  document.getElementById('confirm-rows').value = detectedRows;
+  document.getElementById('confirm-cols').value = detectedCols;
+
+  // Show the confirmation dialog
+  document.getElementById('size-confirmation-dialog').classList.remove('hidden');
+}
+
+function cancelPuzzleLoad() {
+  // Hide dialog and clear pending data
+  document.getElementById('size-confirmation-dialog').classList.add('hidden');
+  pendingPuzzleData = null;
+}
+
+function confirmPuzzleLoad() {
+  // Check if puzzle data exists
+  if (!pendingPuzzleData) {
+    new Notification("No puzzle loaded. Please select a puzzle file first.", 10);
+    document.getElementById('size-confirmation-dialog').classList.add('hidden');
     return;
   }
-  xw.rows = DEFAULT_SIZE;
-  xw.cols = DEFAULT_SIZE;
+
+  // Get confirmed size from dialog
+  const rows = parseInt(document.getElementById('confirm-rows').value);
+  const cols = parseInt(document.getElementById('confirm-cols').value);
+
+  // Validate size
+  if (rows < 3 || rows > 25 || cols < 3 || cols > 25) {
+    new Notification("Invalid size. Rows and columns must be between 3 and 25.", 10);
+    return;
+  }
+
+  // Hide dialog
+  document.getElementById('size-confirmation-dialog').classList.add('hidden');
+
+  // Apply puzzle with confirmed size
+  applyPuzzleWithSize(pendingPuzzleData, rows, cols);
+  pendingPuzzleData = null;
+}
+
+function applyPuzzleWithSize(puz, rows, cols) {
+  // Create new puzzle with specified dimensions
+  createNewPuzzle(rows, cols);
+
+  xw.rows = rows;
+  xw.cols = cols;
+
   // Update puzzle title, author
   xw.title = puz.title || DEFAULT_TITLE;
   if (puz.title.slice(0,8).toUpperCase() == "NY TIMES") {
     xw.title = "NYT Crossword";
   }
   xw.author = puz.author || DEFAULT_AUTHOR;
-  // Update fill
+
+  // Update fill - FIXED: use cols instead of rows for grid index calculation
   new_fill = [];
-  for (let i = 0; i < xw.rows; i++) {
+  for (let i = 0; i < rows; i++) {
     new_fill.push("");
-    for (let j = 0; j < xw.cols; j++) {
-      const k = (i * xw.rows) + j;
-      new_fill[i] += (puz.grid[k].length > 1) ? puz.grid[k][0].toUpperCase() : puz.grid[k].toUpperCase(); // Strip rebus answers to their first letter
+    for (let j = 0; j < cols; j++) {
+      const k = (i * cols) + j; // FIXED: was (i * rows) + j
+      if (k < puz.grid.length) {
+        new_fill[i] += (puz.grid[k].length > 1) ? puz.grid[k][0].toUpperCase() : puz.grid[k].toUpperCase(); // Strip rebus answers to their first letter
+      } else {
+        new_fill[i] += BLANK;
+      }
     }
   }
   xw.fill = new_fill;
@@ -327,26 +382,33 @@ function convertJSONToPuzzle(puz) {
 
   updateGridUI();
   updateLabelsAndClues();
+
   // Load in clues and display current clues
-  for (let i = 0; i < xw.rows; i++) {
-    for (let j = 0; j < xw.cols; j++) {
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
       const activeCell = grid.querySelector('[data-row="' + i + '"]').querySelector('[data-col="' + j + '"]');
-      if (activeCell.firstChild.innerHTML) {
+      if (activeCell && activeCell.firstChild.innerHTML) {
         const label = activeCell.firstChild.innerHTML + ".";
-        for (let k = 0; k < puz.clues.across.length; k++) {
-          if (label == puz.clues.across[k].slice(0, label.length)) {
-            xw.clues[[i, j, ACROSS]] = puz.clues.across[k].slice(label.length).trim();
+        if (puz.clues.across) {
+          for (let k = 0; k < puz.clues.across.length; k++) {
+            if (label == puz.clues.across[k].slice(0, label.length)) {
+              xw.clues[[i, j, ACROSS]] = puz.clues.across[k].slice(label.length).trim();
+            }
           }
         }
-        for (let l = 0; l < puz.clues.down.length; l++) {
-          if (label == puz.clues.down[l].slice(0, label.length)) {
-            xw.clues[[i, j, DOWN]] = puz.clues.down[l].slice(label.length).trim();
+        if (puz.clues.down) {
+          for (let l = 0; l < puz.clues.down.length; l++) {
+            if (label == puz.clues.down[l].slice(0, label.length)) {
+              xw.clues[[i, j, DOWN]] = puz.clues.down[l].slice(label.length).trim();
+            }
           }
         }
       }
     }
   }
   updateUI();
+
+  new Notification(`Loaded ${rows}×${cols} puzzle successfully!`, 5);
 }
 
 function writeFile(format) {

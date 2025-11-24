@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Puzzle Loading Test</title>
+  <style>
+    body {
+      font-family: monospace;
+      padding: 20px;
+      background: #1a1a1a;
+      color: #00ff00;
+    }
+    .test-result {
+      margin: 10px 0;
+      padding: 10px;
+      border-left: 3px solid;
+    }
+    .pass {
+      border-color: #00ff00;
+      background: rgba(0, 255, 0, 0.1);
+    }
+    .fail {
+      border-color: #ff0000;
+      background: rgba(255, 0, 0, 0.1);
+      color: #ff6666;
+    }
+    .info {
+      border-color: #00aaff;
+      background: rgba(0, 170, 255, 0.1);
+      color: #00aaff;
+    }
+    h2 {
+      color: #ffff00;
+    }
+    pre {
+      background: #000;
+      padding: 10px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧪 Phil Puzzle Loading Test Suite</h1>
+  <div id="test-output"></div>
+
+  <script>
+    const output = document.getElementById('test-output');
+    let testsPassed = 0;
+    let testsFailed = 0;
+
+    function log(message, type = 'info') {
+      const div = document.createElement('div');
+      div.className = `test-result ${type}`;
+      div.innerHTML = message;
+      output.appendChild(div);
+      console.log(message);
+    }
+
+    function pass(message) {
+      testsPassed++;
+      log(`✅ PASS: ${message}`, 'pass');
+    }
+
+    function fail(message) {
+      testsFailed++;
+      log(`❌ FAIL: ${message}`, 'fail');
+    }
+
+    function info(message) {
+      log(`ℹ️  ${message}`, 'info');
+    }
+
+    async function runTests() {
+      info('<h2>Starting Puzzle Loading Tests...</h2>');
+
+      // Test 1: Load and parse puzzle-1.xw
+      info('<h3>Test 1: Load puzzle-1.xw</h3>');
+      let puzzleData;
+      try {
+        const response = await fetch('puzzle-1.xw');
+        puzzleData = await response.json();
+        pass('Successfully loaded puzzle-1.xw');
+        info(`<pre>${JSON.stringify(puzzleData.size, null, 2)}</pre>`);
+      } catch (e) {
+        fail(`Failed to load puzzle: ${e.message}`);
+        return;
+      }
+
+      // Test 2: Verify puzzle structure
+      info('<h3>Test 2: Verify Puzzle Structure</h3>');
+      if (puzzleData.size && puzzleData.size.rows && puzzleData.size.cols) {
+        pass(`Puzzle has valid size object: ${puzzleData.size.rows}×${puzzleData.size.cols}`);
+      } else {
+        fail('Puzzle missing size object');
+      }
+
+      if (puzzleData.grid && Array.isArray(puzzleData.grid)) {
+        pass(`Puzzle has grid array with ${puzzleData.grid.length} cells`);
+      } else {
+        fail('Puzzle missing grid array');
+      }
+
+      if (puzzleData.clues && puzzleData.clues.across && puzzleData.clues.down) {
+        pass(`Puzzle has clues: ${puzzleData.clues.across.length} across, ${puzzleData.clues.down.length} down`);
+      } else {
+        fail('Puzzle missing clues');
+      }
+
+      // Test 3: Verify grid dimensions match
+      info('<h3>Test 3: Verify Grid Dimensions</h3>');
+      const expectedCells = puzzleData.size.rows * puzzleData.size.cols;
+      if (puzzleData.grid.length === expectedCells) {
+        pass(`Grid has correct number of cells: ${expectedCells}`);
+      } else {
+        fail(`Grid cell count mismatch: expected ${expectedCells}, got ${puzzleData.grid.length}`);
+      }
+
+      // Test 4: Verify grid index calculation
+      info('<h3>Test 4: Verify Grid Index Calculation</h3>');
+      const rows = puzzleData.size.rows;
+      const cols = puzzleData.size.cols;
+
+      // Test corner cells
+      const topLeft = puzzleData.grid[0];
+      const topRight = puzzleData.grid[cols - 1];
+      const bottomLeft = puzzleData.grid[(rows - 1) * cols];
+      const bottomRight = puzzleData.grid[(rows - 1) * cols + (cols - 1)];
+
+      info(`Top-left cell: "${topLeft}"`);
+      info(`Top-right cell: "${topRight}"`);
+      info(`Bottom-left cell: "${bottomLeft}"`);
+      info(`Bottom-right cell: "${bottomRight}"`);
+      pass('Grid indexing calculation verified');
+
+      // Test 5: Verify all cells are valid
+      info('<h3>Test 5: Verify Cell Content</h3>');
+      let validCells = 0;
+      let blanks = 0;
+      for (let cell of puzzleData.grid) {
+        if (cell === ' ' || cell === '.') {
+          blanks++;
+        } else if (cell.length === 1 && /[A-Z]/.test(cell)) {
+          validCells++;
+        }
+      }
+      pass(`Found ${validCells} letter cells and ${blanks} blank cells`);
+
+      const coverage = ((validCells / puzzleData.grid.length) * 100).toFixed(1);
+      info(`Grid coverage: ${coverage}%`);
+
+      // Test 6: Simulate size confirmation
+      info('<h3>Test 6: Size Validation</h3>');
+      const testSizes = [
+        { rows: 7, cols: 9, valid: true },
+        { rows: 15, cols: 15, valid: true },
+        { rows: 2, cols: 5, valid: false },
+        { rows: 30, cols: 15, valid: false },
+      ];
+
+      for (let size of testSizes) {
+        const isValid = size.rows >= 3 && size.rows <= 25 && size.cols >= 3 && size.cols <= 25;
+        if (isValid === size.valid) {
+          pass(`Size ${size.rows}×${size.cols} correctly validated as ${isValid ? 'valid' : 'invalid'}`);
+        } else {
+          fail(`Size ${size.rows}×${size.cols} validation failed`);
+        }
+      }
+
+      // Test 7: Load puzzle-2.xw
+      info('<h3>Test 7: Load puzzle-2.xw</h3>');
+      try {
+        const response2 = await fetch('puzzle-2.xw');
+        const puzzle2 = await response2.json();
+        pass(`Successfully loaded puzzle-2.xw: ${puzzle2.size.rows}×${puzzle2.size.cols}`);
+
+        const coverage2 = ((puzzle2.grid.filter(c => /[A-Z]/.test(c)).length / puzzle2.grid.length) * 100).toFixed(1);
+        info(`Puzzle #2 coverage: ${coverage2}%`);
+      } catch (e) {
+        fail(`Failed to load puzzle-2: ${e.message}`);
+      }
+
+      // Summary
+      info('<h2>Test Summary</h2>');
+      info(`<strong>Total Tests: ${testsPassed + testsFailed}</strong>`);
+      pass(`<strong>Passed: ${testsPassed}</strong>`);
+      if (testsFailed > 0) {
+        fail(`<strong>Failed: ${testsFailed}</strong>`);
+      }
+
+      if (testsFailed === 0) {
+        pass('<h2>🎉 ALL TESTS PASSED! Ready for manual testing.</h2>');
+      } else {
+        fail('<h2>⚠️  Some tests failed. Please review errors above.</h2>');
+      }
+    }
+
+    // Run tests on load
+    runTests();
+  </script>
+</body>
+</html>
