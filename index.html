@@ -12,6 +12,61 @@
       onkeydown="suppressEnterKey(event)" onfocusout="setAuthor()">Anonymous</span></h1>
   </div>
 
+  <!-- AI Theme Generator Panel -->
+  <div id="ai-generator-panel">
+    <div class="ai-panel-content">
+      <div class="ai-input-group">
+        <label for="theme-input">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+          Theme:
+        </label>
+        <input type="text" id="theme-input" placeholder="e.g., space exploration, medieval history, ocean life..." />
+      </div>
+
+      <div class="ai-controls-group">
+        <div class="ai-control">
+          <label for="grid-size">Size:</label>
+          <select id="grid-size" onchange="toggleCustomSize()">
+            <option value="5">5×5 (Mini)</option>
+            <option value="7">7×7 (Small)</option>
+            <option value="11">11×11 (Medium)</option>
+            <option value="13">13×13 (Large)</option>
+            <option value="15" selected>15×15 (Standard)</option>
+            <option value="custom">Custom...</option>
+          </select>
+        </div>
+
+        <div class="ai-control" id="custom-size-inputs" style="display: none;">
+          <input type="number" id="custom-rows" placeholder="Rows" min="3" max="25" value="5" style="width: 60px; padding: 8px;" />
+          <span>×</span>
+          <input type="number" id="custom-cols" placeholder="Cols" min="3" max="25" value="6" style="width: 60px; padding: 8px;" />
+        </div>
+
+        <div class="ai-control">
+          <label for="difficulty">Difficulty:</label>
+          <select id="difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium" selected>Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </div>
+
+        <button id="generate-ai-btn" class="ai-generate-button" onclick="generateWithAI()">
+          <i class="fa fa-magic" aria-hidden="true"></i>
+          Generate with AI
+        </button>
+      </div>
+    </div>
+
+    <!-- Loading/Progress Indicator -->
+    <div id="ai-progress" class="ai-progress hidden">
+      <div class="ai-progress-bar">
+        <div class="ai-progress-fill"></div>
+      </div>
+      <div class="ai-progress-message">Initializing...</div>
+    </div>
+  </div>
+
   <div id="toolbar">
     <button id="new-grid" type="button" data-tooltip="New puzzle" onclick="createNewPuzzle()">
       <i class="fa fa-plus fa-fw" aria-hidden="true"></i>
@@ -111,9 +166,16 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.2/jspdf.plugin.autotable.js"></script>
+  <!-- Load Phil's core files first (defines xw and other globals) -->
   <script src="patterns.js"></script>
   <script src="cross.js"></script>
   <script src="wordlist.js"></script>
   <script src="files.js"></script>
+  <!-- Then load LLM modules (depend on xw) -->
+  <script src="js/llm/llm-service.js"></script>
+  <script src="js/llm/theme-analyzer.js"></script>
+  <script src="js/llm/word-generator.js"></script>
+  <script src="js/llm/clue-generator.js"></script>
+  <script src="js/llm/ai-generator.js"></script>
 </body>
 </html>

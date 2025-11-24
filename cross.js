@@ -302,9 +302,9 @@ function createNewPuzzle(rows, cols) {
     "acrossWord": '',
     "downWord":   '',
     "acrossStartIndex":0,
-    "acrossEndIndex":  DEFAULT_SIZE,
+    "acrossEndIndex":  xw.cols,
     "downStartIndex":  0,
-    "downEndIndex":    DEFAULT_SIZE,
+    "downEndIndex":    xw.rows,
     "direction":  ACROSS
   };
 

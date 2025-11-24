@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Diagnostic Test</title>
+</head>
+<body>
+  <h1>Diagnostic Test</h1>
+  <div id="output"></div>
+
+  <script src="js/llm/llm-service.js"></script>
+  <script src="js/llm/theme-analyzer.js"></script>
+  <script src="js/llm/word-generator.js"></script>
+  <script src="js/llm/clue-generator.js"></script>
+
+  <script>
+    const output = document.getElementById('output');
+
+    function log(message, type = 'info') {
+      const p = document.createElement('p');
+      p.style.color = type === 'error' ? 'red' : type === 'success' ? 'green' : 'black';
+      p.textContent = message;
+      output.appendChild(p);
+    }
+
+    async function runDiagnostics() {
+      log('Starting diagnostics...');
+
+      // Check if classes are loaded
+      log('Checking class definitions...');
+      log(`LLMService: ${typeof LLMService}`, typeof LLMService === 'function' ? 'success' : 'error');
+      log(`ThemeAnalyzer: ${typeof ThemeAnalyzer}`, typeof ThemeAnalyzer === 'function' ? 'success' : 'error');
+      log(`WordGenerator: ${typeof WordGenerator}`, typeof WordGenerator === 'function' ? 'success' : 'error');
+      log(`ClueGenerator: ${typeof ClueGenerator}`, typeof ClueGenerator === 'function' ? 'success' : 'error');
+
+      // Check if llmService instance exists
+      log(`llmService instance: ${typeof llmService}`, typeof llmService === 'object' ? 'success' : 'error');
+
+      // Try to initialize
+      try {
+        log('Attempting to initialize LLM service...');
+        await llmService.initialize();
+        log('LLM service initialized successfully!', 'success');
+        log(`Config loaded: ${llmService.config ? 'Yes' : 'No'}`, llmService.config ? 'success' : 'error');
+        if (llmService.config) {
+          log(`API key present: ${llmService.config.openai.api_key ? 'Yes' : 'No'}`);
+          log(`Model: ${llmService.config.openai.model}`);
+        }
+      } catch (error) {
+        log(`Initialization failed: ${error.message}`, 'error');
+        log(`Error stack: ${error.stack}`, 'error');
+      }
+    }
+
+    runDiagnostics();
+  </script>
+</body>
+</html>

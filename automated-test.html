@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Automated Test</title>
+  <style>
+    body { font-family: monospace; padding: 20px; background: #000; color: #0f0; }
+    .log { margin: 2px 0; }
+    .error { color: #f00; }
+    .warning { color: #ff0; }
+    .success { color: #0f0; }
+    .info { color: #0ff; }
+  </style>
+</head>
+<body>
+  <h1>Automated Generation Test</h1>
+  <div id="logs"></div>
+  <div id="grid-container" style="display:none;"></div>
+
+  <!-- Load Phil -->
+  <script src="patterns.js"></script>
+  <script src="cross.js"></script>
+  <script src="wordlist.js"></script>
+  <script src="files.js"></script>
+
+  <!-- Load LLM modules -->
+  <script src="js/llm/llm-service.js"></script>
+  <script src="js/llm/theme-analyzer.js"></script>
+  <script src="js/llm/word-generator.js"></script>
+  <script src="js/llm/clue-generator.js"></script>
+  <script src="js/llm/ai-generator.js"></script>
+
+  <script>
+    const logsDiv = document.getElementById('logs');
+
+    // Capture console logs
+    const originalLog = console.log;
+    const originalError = console.error;
+    const originalWarn = console.warn;
+
+    function addLog(message, type = 'info') {
+      const div = document.createElement('div');
+      div.className = `log ${type}`;
+      div.textContent = typeof message === 'object' ? JSON.stringify(message, null, 2) : message;
+      logsDiv.appendChild(div);
+      logsDiv.scrollTop = logsDiv.scrollHeight;
+    }
+
+    console.log = function(...args) {
+      originalLog.apply(console, args);
+      addLog(args.join(' '), 'info');
+    };
+
+    console.error = function(...args) {
+      originalError.apply(console, args);
+      addLog(args.join(' '), 'error');
+    };
+
+    console.warn = function(...args) {
+      originalWarn.apply(console, args);
+      addLog(args.join(' '), 'warning');
+    };
+
+    // Wait for page to load and scripts to initialize
+    window.addEventListener('load', async () => {
+      // Wait a bit for all scripts to fully initialize
+      await new Promise(resolve => setTimeout(resolve, 500));
+
+      console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+      console.log('AUTOMATED TEST STARTING');
+      console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+
+      // Check if Phil is loaded
+      if (typeof xw === 'undefined') {
+        console.error('❌ CRITICAL: xw object not found!');
+        console.error('   Phil (cross.js) did not load correctly');
+        return;
+      }
+      console.log('✅ Phil loaded, xw object exists');
+
+      // Override DOM elements that might not exist
+      const mockElements = {
+        'theme-input': { value: 'love and intimacy' },
+        'grid-size': { value: 'custom' },
+        'custom-rows': { value: '5' },
+        'custom-cols': { value: '6' },
+        'difficulty': { value: 'medium' },
+        'ai-progress': { classList: { add: () => {}, remove: () => {} }, querySelector: () => ({ style: {}, textContent: '' }), style: {} },
+        'generate-ai-btn': { disabled: false, innerHTML: '' },
+        'puzzle-title': { textContent: '' }
+      };
+
+      const originalGetElementById = document.getElementById.bind(document);
+      document.getElementById = function(id) {
+        const element = originalGetElementById(id);
+        if (!element && mockElements[id]) {
+          console.log(`   Using mock element for: ${id}`);
+          return mockElements[id];
+        }
+        return element;
+      };
+
+      try {
+        // Run the generation
+        await generateWithAI();
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+        console.log('✅ TEST COMPLETED SUCCESSFULLY');
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+      } catch (error) {
+        console.error('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+        console.error('❌ TEST FAILED');
+        console.error(error.message);
+        console.error(error.stack);
+        console.error('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LLM Service Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px 5px;
+    }
+    #output {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f5f5f5;
+      border-radius: 5px;
+      white-space: pre-wrap;
+      font-family: monospace;
+    }
+    .success { color: green; }
+    .error { color: red; }
+    .info { color: blue; }
+  </style>
+</head>
+<body>
+  <h1>LLM Service Connection Test</h1>
+  <p>This page tests the OpenAI API connection.</p>
+
+  <button onclick="testConnection()">Test API Connection</button>
+  <button onclick="testWordGeneration()">Test Word Generation</button>
+  <button onclick="clearOutput()">Clear Output</button>
+
+  <div id="output"></div>
+
+  <script src="js/llm/llm-service.js"></script>
+  <script>
+    const output = document.getElementById('output');
+
+    function log(message, type = 'info') {
+      const timestamp = new Date().toLocaleTimeString();
+      const line = `[${timestamp}] ${message}\n`;
+      const span = document.createElement('span');
+      span.className = type;
+      span.textContent = line;
+      output.appendChild(span);
+      output.scrollTop = output.scrollHeight;
+    }
+
+    function clearOutput() {
+      output.innerHTML = '';
+    }
+
+    async function testConnection() {
+      try {
+        log('Initializing LLM Service...', 'info');
+
+        await llmService.initialize();
+        log('✓ Service initialized successfully', 'success');
+
+        if (!llmService.isReady()) {
+          log('✗ Service not ready. Check config.json', 'error');
+          return;
+        }
+        log('✓ Config loaded, API key found', 'success');
+
+        log('Sending test request to OpenAI...', 'info');
+        const response = await llmService.callAPI('Say "Hello from OpenAI!" and nothing else.');
+
+        log('✓ API Response received:', 'success');
+        log(response, 'info');
+
+        const stats = llmService.getCacheStats();
+        log(`Cache stats: ${stats.size} items, TTL: ${stats.ttl_minutes}min`, 'info');
+
+        log('\n✓ ALL TESTS PASSED! API connection is working.', 'success');
+
+      } catch (error) {
+        log('✗ Test failed:', 'error');
+        log(error.message, 'error');
+        log('\nPlease check:', 'info');
+        log('1. config.json exists with valid API key', 'info');
+        log('2. Internet connection is active', 'info');
+        log('3. OpenAI API key has sufficient credits', 'info');
+      }
+    }
+
+    async function testWordGeneration() {
+      try {
+        log('Testing word generation for theme "space"...', 'info');
+
+        await llmService.initialize();
+
+        const prompt = `Generate 10 crossword-suitable words related to the theme "space exploration".
+Return only a JSON array of uppercase words, like: ["ASTEROID", "PLANET", ...]`;
+
+        log('Sending request...', 'info');
+        const response = await llmService.callAPI(prompt);
+
+        log('✓ Response received:', 'success');
+        log(response, 'info');
+
+        try {
+          const words = JSON.parse(response);
+          log(`✓ Parsed ${words.length} words successfully`, 'success');
+          log('Words: ' + words.join(', '), 'info');
+        } catch {
+          log('Note: Response might need parsing adjustment', 'info');
+        }
+
+      } catch (error) {
+        log('✗ Word generation test failed:', 'error');
+        log(error.message, 'error');
+      }
+    }
+  </script>
+</body>
+</html>

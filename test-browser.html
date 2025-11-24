@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Browser Integration Test</title>
+  <style>
+    body {
+      font-family: monospace;
+      padding: 20px;
+      background: #1a1a1a;
+      color: #00ff00;
+    }
+    .success { color: #00ff00; }
+    .error { color: #ff0000; }
+    .warning { color: #ffaa00; }
+    .info { color: #00aaff; }
+    #output { white-space: pre-wrap; }
+    button {
+      padding: 10px 20px;
+      margin: 10px 0;
+      background: #00ff00;
+      color: #000;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover { background: #00cc00; }
+  </style>
+</head>
+<body>
+  <h1>🧪 Browser Integration Test</h1>
+  <button onclick="runTests()">Run All Tests</button>
+  <button onclick="testGridFilling()">Test Grid Filling Only</button>
+  <button onclick="clearOutput()">Clear</button>
+  <div id="output"></div>
+
+  <!-- Load Phil's core first -->
+  <script src="patterns.js"></script>
+  <script src="cross.js"></script>
+  <script src="wordlist.js"></script>
+  <script src="files.js"></script>
+
+  <!-- Load our LLM modules -->
+  <script src="js/llm/llm-service.js"></script>
+  <script src="js/llm/theme-analyzer.js"></script>
+  <script src="js/llm/word-generator.js"></script>
+  <script src="js/llm/clue-generator.js"></script>
+  <script src="js/llm/ai-generator.js"></script>
+
+  <script>
+    const output = document.getElementById('output');
+
+    function log(message, type = 'info') {
+      const span = document.createElement('span');
+      span.className = type;
+      span.textContent = message + '\n';
+      output.appendChild(span);
+    }
+
+    function clearOutput() {
+      output.innerHTML = '';
+    }
+
+    async function runTests() {
+      clearOutput();
+      log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+      log('  BROWSER INTEGRATION TEST');
+      log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+
+      // Test 1: Check Phil globals
+      log('\n1️⃣  Checking Phil globals...', 'info');
+      log(`   typeof xw: ${typeof xw}`, typeof xw === 'object' ? 'success' : 'error');
+      log(`   typeof createNewPuzzle: ${typeof createNewPuzzle}`, typeof createNewPuzzle === 'function' ? 'success' : 'error');
+      log(`   typeof updateSquares: ${typeof updateSquares}`, typeof updateSquares === 'function' ? 'success' : 'error');
+      log(`   typeof setClueNumbers: ${typeof setClueNumbers}`, typeof setClueNumbers === 'function' ? 'success' : 'error');
+      log(`   typeof updateEntries: ${typeof updateEntries}`, typeof updateEntries === 'function' ? 'success' : 'error');
+
+      if (typeof xw !== 'object') {
+        log('❌ Phil not loaded correctly!', 'error');
+        return;
+      }
+
+      // Test 2: Check LLM modules
+      log('\n2️⃣  Checking LLM modules...', 'info');
+      log(`   typeof llmService: ${typeof llmService}`, typeof llmService === 'object' ? 'success' : 'error');
+      log(`   typeof ThemeAnalyzer: ${typeof ThemeAnalyzer}`, typeof ThemeAnalyzer === 'function' ? 'success' : 'error');
+      log(`   typeof WordGenerator: ${typeof WordGenerator}`, typeof WordGenerator === 'function' ? 'success' : 'error');
+      log(`   typeof ClueGenerator: ${typeof ClueGenerator}`, typeof ClueGenerator === 'function' ? 'success' : 'error');
+      log(`   typeof generateWithAI: ${typeof generateWithAI}`, typeof generateWithAI === 'function' ? 'success' : 'error');
+      log(`   typeof fillGridWithWords: ${typeof fillGridWithWords}`, typeof fillGridWithWords === 'function' ? 'success' : 'error');
+
+      // Test 3: Initialize LLM Service
+      log('\n3️⃣  Initializing LLM Service...', 'info');
+      try {
+        await llmService.initialize();
+        log('   ✅ LLM Service initialized', 'success');
+        log(`   Config loaded: ${llmService.config ? 'Yes' : 'No'}`, llmService.config ? 'success' : 'error');
+      } catch (error) {
+        log(`   ❌ Init failed: ${error.message}`, 'error');
+        return;
+      }
+
+      // Test 4: Create test grid
+      log('\n4️⃣  Creating test 5×6 grid...', 'info');
+      try {
+        createNewPuzzle(5, 6);
+        log(`   ✅ Grid created`, 'success');
+        log(`   xw.rows: ${xw.rows}`, 'info');
+        log(`   xw.cols: ${xw.cols}`, 'info');
+        log(`   xw.fill length: ${xw.fill.length}`, 'info');
+        log(`   xw.fill[0]: "${xw.fill[0]}"`, 'info');
+      } catch (error) {
+        log(`   ❌ Grid creation failed: ${error.message}`, 'error');
+        return;
+      }
+
+      // Test 5: Test word placement
+      log('\n5️⃣  Testing word placement...', 'info');
+      try {
+        // Test placing "LOVE" horizontally at (0,0)
+        log('   Placing "LOVE" horizontally at (0,0)...', 'info');
+        placeWordHorizontal(0, 0, 'LOVE');
+        log(`   xw.fill[0] after: "${xw.fill[0]}"`, xw.fill[0].includes('LOVE') ? 'success' : 'error');
+
+        // Test placing "HUG" vertically at (0,5)
+        log('   Placing "HUG" vertically at (0,5)...', 'info');
+        placeWordVertical(0, 5, 'HUG');
+        log(`   xw.fill[0][5]: "${xw.fill[0][5]}"`, xw.fill[0][5] === 'H' ? 'success' : 'error');
+        log(`   xw.fill[1][5]: "${xw.fill[1][5]}"`, xw.fill[1][5] === 'U' ? 'success' : 'error');
+        log(`   xw.fill[2][5]: "${xw.fill[2][5]}"`, xw.fill[2][5] === 'G' ? 'success' : 'error');
+
+        log('   ✅ Word placement working', 'success');
+      } catch (error) {
+        log(`   ❌ Word placement failed: ${error.message}`, 'error');
+        log(`   Stack: ${error.stack}`, 'error');
+        return;
+      }
+
+      // Test 6: Test word extraction
+      log('\n6️⃣  Testing word extraction...', 'info');
+      try {
+        const words = extractWordsFromGrid();
+        log(`   ✅ Extracted ${words.length} words: ${words.join(', ')}`, 'success');
+      } catch (error) {
+        log(`   ❌ Word extraction failed: ${error.message}`, 'error');
+        return;
+      }
+
+      log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+      log('✅ ALL BROWSER TESTS PASSED!', 'success');
+      log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+    }
+
+    async function testGridFilling() {
+      clearOutput();
+      log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+      log('  GRID FILLING TEST');
+      log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+
+      // Create fresh grid
+      createNewPuzzle(5, 6);
+      log('Created 5×6 grid\n', 'info');
+
+      // Test words
+      const testWords = [
+        { word: 'LOVE', length: 4, score: 0.9 },
+        { word: 'HEART', length: 5, score: 0.85 },
+        { word: 'KISS', length: 4, score: 0.8 },
+        { word: 'ROSE', length: 4, score: 0.75 },
+        { word: 'DATE', length: 4, score: 0.7 }
+      ];
+
+      log('Test words: ' + testWords.map(w => w.word).join(', '), 'info');
+      log('\nCalling fillGridWithWords...', 'info');
+
+      try {
+        await fillGridWithWords(testWords, { rows: 5, cols: 6 });
+
+        log('\n✅ fillGridWithWords completed', 'success');
+        log('\nGrid state:', 'info');
+        for (let i = 0; i < xw.rows; i++) {
+          log(`   Row ${i}: "${xw.fill[i]}"`, 'info');
+        }
+
+        const words = extractWordsFromGrid();
+        log(`\n✅ Extracted ${words.length} words from grid: ${words.join(', ')}`, 'success');
+
+        if (words.length === 0) {
+          log('⚠️  WARNING: Grid is empty! No words were placed.', 'warning');
+        }
+      } catch (error) {
+        log(`❌ fillGridWithWords failed: ${error.message}`, 'error');
+        log(`Stack: ${error.stack}`, 'error');
+      }
+    }
+  </script>
+</body>
+</html>
